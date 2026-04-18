@@ -225,7 +225,7 @@ Se você usar este sistema em sua pesquisa, considere citar:
 ```
 GROSS, R. PRISMA-SLR: Sistema web open-source para revisões sistemáticas
 baseado no protocolo PRISMA 2020. GitHub, 2026.
-Disponível em: https://github.com/SEU_USUARIO/prisma-slr
+Disponível em: https://github.com/rafaelgross/prisma-slr
 ```
 
 ---
