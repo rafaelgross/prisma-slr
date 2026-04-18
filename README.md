@@ -122,7 +122,20 @@ define('GOOGLE_CLIENT_SECRET', 'SEU_CLIENT_SECRET');
 define('GOOGLE_REDIRECT_URI',  'http://localhost/prisma-slr/auth/callback.php');
 ```
 
-### 5. Acesse o sistema
+### 5. Configure a tradução de resumos (opcional)
+
+O botão **Traduzir** na triagem usa a API gratuita [MyMemory](https://mymemory.translated.net/). Sem e-mail o limite é 1.000 palavras/dia; com e-mail cadastrado sobe para 10.000 palavras/dia.
+
+Adicione ao final do seu `config/database.php`:
+
+```php
+// E-mail para aumentar o limite de tradução (gratuito em mymemory.translated.net)
+define('MYMEMORY_EMAIL', 'seu@email.com');
+```
+
+> Este arquivo está no `.gitignore` — seu e-mail nunca será enviado ao repositório.
+
+### 6. Acesse o sistema
 
 Aponte seu servidor web para a pasta do projeto e acesse pelo navegador. Na primeira vez, você será redirecionado para a tela de login com Google.
 

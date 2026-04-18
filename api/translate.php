@@ -53,7 +53,10 @@ function splitText(string $text, int $maxLen = 490): array {
 function translateChunk(string $chunk): string {
     $encoded = urlencode($chunk);
     // Adicionar email aumenta o limite gratuito de 1.000 para 10.000 palavras/dia
-    $url     = "https://api.mymemory.translated.net/get?q={$encoded}&langpair=en|pt-BR&de=rafaelgross123@gmail.com";
+    // Configure seu e-mail em config/database.php ou deixe vazio para usar o limite básico
+    $email = defined('MYMEMORY_EMAIL') ? MYMEMORY_EMAIL : '';
+    $emailParam = $email ? "&de=" . urlencode($email) : '';
+    $url     = "https://api.mymemory.translated.net/get?q={$encoded}&langpair=en|pt-BR{$emailParam}";
 
     $ctx = stream_context_create([
         'http' => [
