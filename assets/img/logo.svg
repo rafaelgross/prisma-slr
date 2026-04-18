@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 44" fill="none">
+  <!-- P hexagon icon -->
+  <polygon points="20,4 34,12 34,28 20,36 6,28 6,12" fill="none" stroke="#00D4FF" stroke-width="2"/>
+  <text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#00D4FF">P</text>
+  <!-- Wordmark -->
+  <text x="46" y="28" font-family="Inter,sans-serif" font-size="18" font-weight="700" fill="#e2e8f0">PRISMA</text>
+  <text x="122" y="28" font-family="Inter,sans-serif" font-size="18" font-weight="300" fill="#94a3b8">-SLR</text>
+</svg>

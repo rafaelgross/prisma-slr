@@ -1,0 +1,58 @@
+# PRISMA-SLR — .gitignore
+
+# ─── Configuração local (não commitar credenciais) ───────────
+# IMPORTANTE: renomeie auth.php para auth.example.php antes de commitar
+# O arquivo auth.php contém seu Client ID e Client Secret do Google
+config/auth.php
+config/database.php
+config/*.local.php
+.env
+.env.local
+
+# ─── Uploads temporários ─────────────────────────────────────
+uploads/
+tmp/
+*.bib.tmp
+
+# ─── Logs ────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Sistema operacional ─────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ─── IDE / Editores ──────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ─── PHP ─────────────────────────────────────────────────────
+vendor/
+composer.lock
+
+# ─── Node (caso use npm para assets) ─────────────────────────
+node_modules/
+package-lock.json
+yarn.lock
+dist/
+.npm
+
+# ─── Cache ───────────────────────────────────────────────────
+.cache/
+*.cache
+
+# ─── Backup / exports temporários ────────────────────────────
+*.sql.bak
+*.csv.tmp
+export_temp/
