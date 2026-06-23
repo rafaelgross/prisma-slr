@@ -1,162 +1,162 @@
 # PRISMA-SLR
 
-> Sistema web gratuito e open-source para condução de Revisões Sistemáticas da Literatura com base no protocolo **PRISMA 2020**.
+> Free, open-source web system for conducting Systematic Literature Reviews based on the **PRISMA 2020** protocol.
 
 ![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-4479A1?logo=mysql&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![PRISMA](https://img.shields.io/badge/Protocolo-PRISMA%202020-6c63ff)
+![PRISMA](https://img.shields.io/badge/Protocol-PRISMA%202020-6c63ff)
 
 ---
 
-## Sobre o projeto
+## About the project
 
-O **PRISMA-SLR** é uma plataforma completa para gerenciar todas as etapas de uma revisão sistemática da literatura, desde a importação de referências bibliográficas até a geração do diagrama PRISMA 2020 e exportação de referências formatadas. Foi desenvolvido para rodar em qualquer servidor web com PHP e MySQL, sem dependências externas pagas.
+**PRISMA-SLR** is a complete platform for managing every stage of a systematic literature review, from importing bibliographic references to generating the PRISMA 2020 flow diagram and exporting formatted references. It is built to run on any web server with PHP and MySQL, with no paid external dependencies.
 
-O sistema suporta múltiplos usuários via login com conta Google, cada um com seus próprios projetos e dados isolados.
-
----
-
-## Funcionalidades
-
-- **Gestão de projetos** — crie e gerencie múltiplas revisões sistemáticas
-- **Importação de referências** — suporte a BibTeX (`.bib`), RIS (`.ris`), PubMed XML (`.xml`) e arquivos de texto (`.txt`)
-- **Deduplicação automática** — identifica e marca artigos duplicados entre bases
-- **Triagem de títulos e resumos** — interface para incluir/excluir artigos com motivos configuráveis
-- **Elegibilidade em texto completo** — segunda fase de avaliação com motivos personalizados
-- **Diagrama PRISMA 2020** — geração automática do fluxograma SVG com exportação em PNG e SVG
-- **Bibliometria** — gráficos de publicações por ano, periódico, autor, país e mapa de coautoria
-- **Checklist PRISMA 2020** — todos os 27 itens obrigatórios com controle de cumprimento
-- **Referências formatadas** — geração automática em **ABNT NBR 6023:2018** e **APA 7ª edição**
-- **Exportação** — exporta artigos selecionados em CSV, BibTeX e JSON
-- **Multi-idioma** — interface traduzível via gtranslate.io (PT / EN / ES)
-- **Tema claro/escuro** — alternância de tema salva por usuário
-- **Autenticação Google OAuth 2.0** — login seguro com conta Google; cada usuário tem seus projetos isolados
+The system supports multiple users via Google account login, each with their own projects and isolated data.
 
 ---
 
-## Bases bibliográficas suportadas
+## Features
 
-| Base | Formato de exportação |
-|---|---|
+- **Project management** — create and manage multiple systematic reviews
+- **Reference import** — supports BibTeX (`.bib`), RIS (`.ris`), PubMed XML (`.xml`) and plain text (`.txt`)
+- **Automatic deduplication** — detects and flags duplicate articles across databases
+- **Title and abstract screening** — interface to include/exclude articles with configurable reasons
+- **Full-text eligibility** — second assessment phase with customizable reasons
+- **PRISMA 2020 flow diagram** — automatic SVG flowchart generation with PNG and SVG export
+- **Bibliometrics** — charts of publications by year, journal, author, country, and co-authorship maps
+- **PRISMA 2020 checklist** — all 27 mandatory items with compliance tracking
+- **Formatted references** — automatic generation in **ABNT NBR 6023:2018** and **APA 7th edition**
+- **Export** — export selected articles to CSV, BibTeX and JSON
+- **Multi-language** — interface translatable via gtranslate.io (PT / EN / ES)
+- **Light/dark theme** — per-user theme toggle
+- **Google OAuth 2.0 authentication** — secure login with a Google account; each user has isolated projects
+
+---
+
+## Supported bibliographic databases
+
+| Database | Export format |
+| --- | --- |
 | Scopus | BibTeX, RIS |
 | Web of Science | BibTeX, RIS |
 | PubMed | XML, RIS |
 | Embase | RIS |
 | Mendeley / Zotero / EndNote | RIS, BibTeX |
 | IEEE Xplore | BibTeX |
-| Outras | BibTeX, RIS |
+| Others | BibTeX, RIS |
 
 ---
 
-## Tecnologias
+## Technologies
 
-- **Back-end:** PHP 8.1+ (sem frameworks)
-- **Banco de dados:** MySQL 5.7+ / MariaDB 10.4+
-- **Front-end:** HTML5, CSS3, JavaScript puro
-- **Bibliotecas JS:** Chart.js, vis.js Network, WordCloud2.js, FileSaver.js
-- **Autenticação:** Google OAuth 2.0
-
----
-
-## Requisitos
-
-- PHP 8.1 ou superior com extensões: `pdo_mysql`, `curl`, `simplexml`, `mbstring`
-- MySQL 5.7+ ou MariaDB 10.4+
-- Servidor web: Apache ou Nginx (ou MAMP/XAMPP para uso local)
-- Conta no [Google Cloud Console](https://console.cloud.google.com/) para configurar o OAuth
+- **Back-end:** PHP 8.1+ (no frameworks)
+- **Database:** MySQL 5.7+ / MariaDB 10.4+
+- **Front-end:** HTML5, CSS3, vanilla JavaScript
+- **JS libraries:** Chart.js, vis.js Network, WordCloud2.js, FileSaver.js
+- **Authentication:** Google OAuth 2.0
 
 ---
 
-## Instalação
+## Requirements
 
-### 1. Clone o repositório
+- PHP 8.1 or higher with extensions: `pdo_mysql`, `curl`, `simplexml`, `mbstring`
+- MySQL 5.7+ or MariaDB 10.4+
+- Web server: Apache or Nginx (or MAMP/XAMPP for local use)
+- A [Google Cloud Console](https://console.cloud.google.com/) account to configure OAuth
 
-```bash
-git clone https://github.com/SEU_USUARIO/prisma-slr.git
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```
+git clone https://github.com/rafaelgross/prisma-slr.git
 cd prisma-slr
 ```
 
-### 2. Configure o banco de dados
+### 2. Set up the database
 
-Crie o banco e execute os scripts SQL na ordem:
+Create the database and run the SQL scripts in order:
 
-```bash
+```
 mysql -u root -p < sql/schema.sql
 mysql -u root -p prisma_slr < sql/add_users_table.sql
 mysql -u root -p prisma_slr < sql/add_user_id_to_projects.sql
 ```
 
-### 3. Configure a conexão com o banco
+### 3. Configure the database connection
 
-Edite o arquivo `config/database.php` com suas credenciais:
+Edit `config/database.php` with your credentials:
 
-```php
+```
 define('DB_HOST', '127.0.0.1');
-define('DB_PORT', '3306');   // 8889 para MAMP
+define('DB_PORT', '3306');   // 8889 for MAMP
 define('DB_NAME', 'prisma_slr');
-define('DB_USER', 'seu_usuario');
-define('DB_PASS', 'sua_senha');
+define('DB_USER', 'your_user');
+define('DB_PASS', 'your_password');
 ```
 
-### 4. Configure o Google OAuth 2.0
+### 4. Configure Google OAuth 2.0
 
-#### 4.1 Crie as credenciais no Google Cloud Console
+#### 4.1 Create credentials in the Google Cloud Console
 
-1. Acesse [console.cloud.google.com](https://console.cloud.google.com)
-2. Crie ou selecione um projeto
-3. Vá em **APIs e serviços** → **Credenciais** → **+ Criar Credenciais** → **ID do cliente OAuth 2.0**
-4. Tipo de aplicativo: **Aplicativo Web**
-5. Em **URIs de redirecionamento autorizados**, adicione:
-   - `http://localhost/prisma-slr/auth/callback.php` (ambiente local)
-   - `https://seudominio.com/prisma-slr/auth/callback.php` (produção)
-6. Copie o **ID do cliente** e o **Segredo do cliente**
+1. Go to [console.cloud.google.com](https://console.cloud.google.com)
+2. Create or select a project
+3. Go to **APIs & Services** → **Credentials** → **+ Create Credentials** → **OAuth 2.0 Client ID**
+4. Application type: **Web application**
+5. Under **Authorized redirect URIs**, add:
+   - `http://localhost/prisma-slr/auth/callback.php` (local environment)
+   - `https://yourdomain.com/prisma-slr/auth/callback.php` (production)
+6. Copy the **Client ID** and the **Client Secret**
 
-#### 4.2 Cole as credenciais no sistema
+#### 4.2 Paste the credentials into the system
 
-Edite `config/auth.php`:
+Edit `config/auth.php`:
 
-```php
-define('GOOGLE_CLIENT_ID',     'SEU_CLIENT_ID.apps.googleusercontent.com');
-define('GOOGLE_CLIENT_SECRET', 'SEU_CLIENT_SECRET');
+```
+define('GOOGLE_CLIENT_ID',     'YOUR_CLIENT_ID.apps.googleusercontent.com');
+define('GOOGLE_CLIENT_SECRET', 'YOUR_CLIENT_SECRET');
 define('GOOGLE_REDIRECT_URI',  'http://localhost/prisma-slr/auth/callback.php');
 ```
 
-### 5. Configure a tradução de resumos (opcional)
+### 5. Configure abstract translation (optional)
 
-O botão **Traduzir** na triagem usa a API gratuita [MyMemory](https://mymemory.translated.net/). Sem e-mail o limite é 1.000 palavras/dia; com e-mail cadastrado sobe para 10.000 palavras/dia.
+The **Translate** button in screening uses the free [MyMemory](https://mymemory.translated.net/) API. Without an email the limit is 1,000 words/day; with a registered email it rises to 10,000 words/day.
 
-Adicione ao final do seu `config/database.php`:
+Add to the end of your `config/database.php`:
 
-```php
-// E-mail para aumentar o limite de tradução (gratuito em mymemory.translated.net)
-define('MYMEMORY_EMAIL', 'seu@email.com');
+```
+// Email to raise the translation limit (free at mymemory.translated.net)
+define('MYMEMORY_EMAIL', 'you@email.com');
 ```
 
-> Este arquivo está no `.gitignore` — seu e-mail nunca será enviado ao repositório.
+> This file is in `.gitignore` — your email is never pushed to the repository.
 
-### 6. Acesse o sistema
+### 6. Access the system
 
-Aponte seu servidor web para a pasta do projeto e acesse pelo navegador. Na primeira vez, você será redirecionado para a tela de login com Google.
+Point your web server to the project folder and open it in the browser. On first launch you will be redirected to the Google login screen.
 
-> **Primeiro acesso:** o usuário que fizer login primeiro terá todos os projetos existentes no banco atribuídos automaticamente à sua conta.
-
----
-
-## Uso local com MAMP (macOS)
-
-1. Copie a pasta `prisma-slr` para `/Applications/MAMP/htdocs/`
-2. Inicie o MAMP e acesse `http://localhost/prisma-slr/`
-3. Use o phpMyAdmin (`http://localhost:8888/phpMyAdmin`) para executar os scripts SQL
-4. Configure `DB_PORT` como `8889` em `config/database.php`
+> **First access:** the first user to log in will have all existing projects in the database automatically assigned to their account.
 
 ---
 
-## Estrutura do projeto
+## Local use with MAMP (macOS)
+
+1. Copy the `prisma-slr` folder to `/Applications/MAMP/htdocs/`
+2. Start MAMP and open `http://localhost/prisma-slr/`
+3. Use phpMyAdmin (`http://localhost:8888/phpMyAdmin`) to run the SQL scripts
+4. Set `DB_PORT` to `8889` in `config/database.php`
+
+---
+
+## Project structure
 
 ```
 prisma-slr/
-├── api/                 # Endpoints REST (PHP)
+├── api/                 # REST endpoints (PHP)
 │   ├── articles.php
 │   ├── bibliometrics.php
 │   ├── duplicates.php
@@ -167,84 +167,84 @@ prisma-slr/
 │   ├── references.php
 │   └── screening.php
 ├── assets/
-│   ├── css/style.css    # Estilos globais
-│   ├── js/              # Scripts por página
-│   └── img/             # Logo e ícones
-├── auth/                # Fluxo OAuth 2.0
+│   ├── css/style.css    # Global styles
+│   ├── js/              # Per-page scripts
+│   └── img/             # Logo and icons
+├── auth/                # OAuth 2.0 flow
 │   ├── callback.php
 │   ├── google.php
 │   └── logout.php
 ├── config/
-│   ├── auth.php         # Configuração OAuth e helpers de sessão
-│   └── database.php     # Conexão PDO
-├── lib/                 # Parsers de referência
+│   ├── auth.php         # OAuth config and session helpers
+│   └── database.php     # PDO connection
+├── lib/                 # Reference parsers
 │   ├── BibTexParser.php
 │   ├── RisParser.php
 │   └── PubMedXmlParser.php
-├── pages/               # Views PHP por página
-├── sql/                 # Scripts de banco de dados
+├── pages/               # PHP views per page
+├── sql/                 # Database scripts
 │   ├── schema.sql
 │   ├── add_users_table.sql
 │   └── add_user_id_to_projects.sql
-├── index.php            # Roteador principal
-└── login.php            # Página de login
+├── index.php            # Main router
+└── login.php            # Login page
 ```
 
 ---
 
-## Multi-usuário
+## Multi-user
 
-O sistema suporta múltiplos pesquisadores de forma isolada:
+The system supports multiple researchers in isolation:
 
-- Cada usuário faz login com sua própria conta Google
-- Cada um vê e gerencia apenas seus próprios projetos
-- Novos usuários começam com a lista de projetos vazia
-- Não há limite de usuários
-
----
-
-## Segurança
-
-- Autenticação via Google OAuth 2.0 (sem senhas armazenadas localmente)
-- Proteção CSRF com state token em todos os fluxos OAuth
-- Sessões com expiração automática (8 horas)
-- Queries parametrizadas via PDO em todos os endpoints
-- Cada usuário só acessa projetos de sua propriedade
+- Each user logs in with their own Google account
+- Each user only sees and manages their own projects
+- New users start with an empty project list
+- No user limit
 
 ---
 
-## Licença
+## Security
 
-Distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/minha-feature`)
-3. Faça commit das suas alterações (`git commit -m 'feat: adiciona minha feature'`)
-4. Faça push para a branch (`git push origin feature/minha-feature`)
-5. Abra um Pull Request
+- Authentication via Google OAuth 2.0 (no passwords stored locally)
+- CSRF protection with a state token in all OAuth flows
+- Sessions with automatic expiration (8 hours)
+- Parameterized queries via PDO in all endpoints
+- Each user can only access projects they own
 
 ---
 
-## Citação
+## License
 
-Se você usar este sistema em sua pesquisa, considere citar:
+Distributed under the **MIT** license. See the [LICENSE](https://github.com/rafaelgross/prisma-slr/blob/main/LICENSE) file for details.
+
+---
+
+## Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/my-feature`)
+3. Commit your changes (`git commit -m 'feat: add my feature'`)
+4. Push to the branch (`git push origin feature/my-feature`)
+5. Open a Pull Request
+
+---
+
+## Citation
+
+If you use this system in your research, please consider citing:
 
 ```
-GROSS, R. PRISMA-SLR: Sistema web open-source para revisões sistemáticas
-baseado no protocolo PRISMA 2020. GitHub, 2026.
-Disponível em: https://github.com/rafaelgross/prisma-slr
+GROSS, R. PRISMA-SLR: Open-source web system for systematic literature reviews
+based on the PRISMA 2020 protocol. GitHub, 2026.
+Available at: https://github.com/rafaelgross/prisma-slr
 ```
 
 ---
 
-## Referências
+## References
 
 - Page, M. J. et al. *The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.* BMJ, 2021. [doi:10.1136/bmj.n71](https://doi.org/10.1136/bmj.n71)
-- ABNT NBR 6023:2018 — Informação e documentação: Referências
-- APA 7ª edição — Publication Manual of the American Psychological Association
+- ABNT NBR 6023:2018 — Information and documentation: References
+- APA 7th edition — Publication Manual of the American Psychological Association
